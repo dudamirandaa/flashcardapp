@@ -1,6 +1,7 @@
 package com.example.flashcardapp.folder;
 
 import com.example.flashcardapp.model.Folder;
+import com.example.flashcardapp.model.FolderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +30,13 @@ public class FolderResource {
     }
 
     @PostMapping
-    public Folder newFolder(@RequestBody Folder newFolder) {
-        return folderService.save(newFolder);
+    public Folder newFolder(@RequestBody FolderDTO folderDTO) {
+        return folderService.save(folderDTO);
+    }
+
+    @PutMapping("/{id}")
+    public Optional<Folder> update(@PathVariable Long id, @RequestBody FolderDTO folderDTO) {
+        return folderService.update(id, folderDTO);
     }
 
     @DeleteMapping("/{id}")
