@@ -1,20 +1,51 @@
-<div class="container">
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <table class="table table-sm mb-5">
-          <tbody>
-            <tr>
-              <thead>
-                <td class="col-10">Flashcards</td>
-                <td class="col-2"></td>
-              </thead>
-            </tr>
-            <tr *ngFor="let flashcard of flashcards">
-              <td class="col-10">{{flashcard.word}}</td>
-            </tr>
-        </table>
+<div class="container p-3">
+    <div>
+      <h3>Flashcards</h3>
+
+      <div *ngIf="folderId" class="p-3">
+        <p>Add flashcard</p>
+        <form [formGroup]="addFlashcardForm" (ngSubmit)="addFlashcard()" class="d-flex justify-content-around">
+          <input class="form-control-sm" type="text" formControlName="word" placeholder="Word" aria-label="word">
+          <input class="form-control-sm" type="text" formControlName="translation" placeholder="Translation" aria-label="translation">
+          <input class="form-control-sm" list="genderOptions" formControlName="gender" placeholder="Gender" aria-label="gender">
+          <datalist id="genderOptions">
+            <option value="der">
+            <option value="die">
+            <option value="das">
+          </datalist>
+          <input class="form-control-sm" list="wordClassOptions" formControlName="wordClass" placeholder="Word class" aria-label="word class">
+          <datalist id="wordClassOptions">
+            <option value="noun">
+            <option value="verb">
+            <option value="adjective">
+          </datalist>
+          <input class="form-control-sm" type="text" formControlName="exampleSentence" placeholder="Example sentence" aria-label="example sentence">
+          <button type="submit" [disabled]="addFlashcardForm.invalid" class="btn btn-primary btn-sm">Add flashcard</button>
+        </form>
       </div>
-      <div class="col-md-3"></div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Word</th>
+            <th>Translation</th>
+            <th>Gender</th>
+            <th>Word class</th>
+            <th>State</th>
+            <th>Example sentence</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let flashcard of flashcards">
+            <td>{{flashcard.word}}</td>
+            <td>{{flashcard.translation}}</td>
+            <td>{{flashcard.gender}}</td>
+            <td>{{flashcard.wordClass}}</td>
+            <td>{{flashcard.state}}</td>
+            <td>{{flashcard.exampleSentence}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
-  </div>
+</div>

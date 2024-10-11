@@ -5,6 +5,6 @@ export interface Flashcard {
     gender: string;
     wordClass: string;
     state: string;
-    exampleSentenc: string;
+    exampleSentence: string;
     folderId: number;
 }

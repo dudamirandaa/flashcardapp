@@ -7,17 +7,23 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FlashcardsComponent } from './flashcards/flashcards.component';
 import { provideHttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FolderComponent } from './folder/folder.component';
+import { StudyComponent } from './study/study.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FlashcardsComponent
+    FlashcardsComponent,
+    FolderComponent,
+    StudyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),

@@ -1,0 +1,24 @@
+<div *ngIf="currentFlashcard" class="p-3">
+    <div class="card text-center">
+        <div class="card-body">
+            <div *ngIf="wordAndTranslation">
+                <h3 (click)="toggleWordAndTranslation()">{{currentFlashcard.word}}</h3>
+            </div>
+            <div *ngIf="!wordAndTranslation">
+                <h3 (click)="toggleWordAndTranslation()">{{currentFlashcard.translation}}</h3>
+            </div>
+            <div>
+                <button class="btn btn-warning" (click)="nextItem()" [disabled]="currentIndex === flashcards.length - 1">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!flashcards.length" class="p-3">
+    <div class="card text-center">
+        <div class="card-body">
+            <p>No flashcards on this folder yet</p>
+            <button type="submit" (click)="addFlashcards(folderId)" class="btn btn-primary btn-sm">Add flashcards</button>
+        </div>
+    </div>
+  </div>
