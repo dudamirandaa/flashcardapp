@@ -62,7 +62,11 @@
             <td>{{flashcard.translation}}</td>
             <td>{{flashcard.gender}}</td>
             <td>{{flashcard.wordClass}}</td>
-            <td>{{flashcard.state}}</td>
+            <td [ngClass]="{'text-danger-emphasis': flashcard.state === 'unfamiliar', 
+                              'text-primary-emphasis': flashcard.state === 'familiar', 
+                              'text-success-emphasis': flashcard.state === 'acquired'}">
+              {{flashcard.state}}
+            </td>
             <td>{{flashcard.exampleSentence}}</td>
             <td>
               <button type="submit" (click)="deleteFlashcard(flashcard.id)" class="btn btn-danger btn-sm">Detele</button>
