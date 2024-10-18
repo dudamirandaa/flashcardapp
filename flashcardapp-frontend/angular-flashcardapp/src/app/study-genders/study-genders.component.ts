@@ -4,17 +4,16 @@ import { FlashcardsService } from '../flashcards.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-study',
-  templateUrl: './study.component.html',
-  styleUrl: './study.component.css'
+  selector: 'app-study-genders',
+  templateUrl: './study-genders.component.html',
+  styleUrl: './study-genders.component.css'
 })
-export class StudyComponent {
+export class StudyGendersComponent {
   flashcards: Flashcard[] = [];
   folderId: string | null = null;
   currentFlashcard: Flashcard | null = null;
   currentIndex: number = 0;
-  wordAndTranslation = false;
-  showExampleSentence = false;
+  checkAnswer = false;
 
   constructor(
     private flashcardsService: FlashcardsService,
@@ -29,7 +28,7 @@ export class StudyComponent {
 
   async listFlashcardsByFolder(id: number) {
     await this.flashcardsService.getFlashcardsByFolder(id).subscribe((flashcards) => {
-      this.flashcards = flashcards
+      this.flashcards = flashcards.filter(flashcard => flashcard.wordClass === 'noun');
 
       if(this.flashcards.length > 0) {
         this.currentFlashcard = this.flashcards[this.currentIndex];
@@ -37,25 +36,17 @@ export class StudyComponent {
     })
   }
 
-  toggleWordAndTranslation() {
-    this.wordAndTranslation = !this.wordAndTranslation;
+  toggleCheckAnswer() {
+    this.checkAnswer = !this.checkAnswer;
   }
-
-  toggleShowExampleSentence() {
-    this.showExampleSentence = !this.showExampleSentence;
-  }
-
 
   nextItem(): void {
     if (this.currentIndex < this.flashcards.length - 1) {
       this.currentIndex++;
       this.currentFlashcard = this.flashcards[this.currentIndex];
-      if (this.wordAndTranslation) {
-        this.toggleWordAndTranslation();
-      }
-      if (this.showExampleSentence) {
-        this.toggleShowExampleSentence();
-      }
+    }
+    if (this.checkAnswer) {
+      this.toggleCheckAnswer();
     }
   }
 

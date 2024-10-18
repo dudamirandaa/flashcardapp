@@ -28,11 +28,9 @@ export class FlashcardsService {
     });
   }
 
-  updateFlashcard() {
-
-  }
-
-  deleteFlashcard() {
-
+  deleteFlashcard(id: number) {
+    this.http.delete<Flashcard>('api/flashcards/' + id).subscribe(() => {
+      window.location.reload();
+    });
   }
 }

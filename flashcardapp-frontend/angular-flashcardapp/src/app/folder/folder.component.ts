@@ -41,11 +41,15 @@ export class FolderComponent {
     }
   }
 
-  onViewClick(folderId: number) {
+  view(folderId: number) {
     this.router.navigate([`/flashcards`, folderId])
   }
 
-  onStudyClick(folderId: number) {
+  studyGenders(folderId: number) {
+    this.router.navigate([`/study-genders`, folderId])
+  }
+
+  study(folderId: number) {
     this.router.navigate([`/study`, folderId])
   }
 

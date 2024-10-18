@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { FolderComponent } from './folder/folder.component';
 import { StudyComponent } from './study/study.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StudyGendersComponent } from './study-genders/study-genders.component';
+import { GreetingsComponent } from './greetings/greetings.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     FlashcardsComponent,
     FolderComponent,
-    StudyComponent
+    StudyComponent,
+    StudyGendersComponent,
+    GreetingsComponent
   ],
   imports: [
     BrowserModule,

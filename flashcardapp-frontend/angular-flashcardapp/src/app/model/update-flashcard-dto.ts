@@ -1,4 +1,4 @@
-export interface AddFlashcardDTO {
+export interface UpdateFlashcardDTO {
     word: string;
     translation: string;
     gender: string | null;

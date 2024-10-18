@@ -7,8 +7,14 @@
             <div *ngIf="!wordAndTranslation">
                 <h3 (click)="toggleWordAndTranslation()">{{currentFlashcard.translation}}</h3>
             </div>
+            <div *ngIf="showExampleSentence" class="text-secondary-emphasis">
+                <p>{{currentFlashcard.exampleSentence}}</p>
+            </div>
             <div>
-                <button class="btn btn-warning" (click)="nextItem()" [disabled]="currentIndex === flashcards.length - 1">Next</button>
+                <button class="btn btn-secondary btn-sm" (click)="toggleShowExampleSentence()">View example sentence</button>
+            </div>
+            <div>
+                <button class="btn btn-warning m-3" (click)="nextItem()" [disabled]="currentIndex === flashcards.length - 1">Next</button>
             </div>
         </div>
     </div>
@@ -22,3 +28,7 @@
         </div>
     </div>
   </div>
+
+<div class="alert alert-primary m-3 alert-sm d-inline-block">
+    Note: you can click on the word to see the translation :)
+</div>

@@ -1,0 +1,29 @@
+<div *ngIf="currentFlashcard" class="p-3">
+    <div class="card text-center">
+        <div class="card-body">
+            <div >
+                <h3 *ngIf="checkAnswer" [ngClass]="{'text-primary-emphasis': currentFlashcard.gender === 'der', 
+                                                      'text-danger': currentFlashcard.gender === 'die', 
+                                                      'text-success': currentFlashcard.gender === 'das'}">
+                    {{currentFlashcard.gender}}
+                </h3>
+                <h3>{{currentFlashcard.word}}</h3>
+            </div>
+            <div>
+                <button class="btn btn-primary" (click)="toggleCheckAnswer()">Check answer</button>
+            </div>
+            <div>
+                <button class="btn btn-warning m-3" (click)="nextItem()" [disabled]="currentIndex === flashcards.length - 1">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!flashcards.length" class="p-3">
+    <div class="card text-center">
+        <div class="card-body">
+            <p>No flashcards on this folder yet</p>
+            <button type="submit" (click)="addFlashcards(folderId)" class="btn btn-primary btn-sm">Add flashcards</button>
+        </div>
+    </div>
+  </div>

@@ -35,7 +35,10 @@ export class FlashcardsComponent {
       
       this.addFlashcardForm = this.formBuilder.group({
         word: ["", Validators.required],
-        translation: ["", Validators.required]
+        translation: ["", Validators.required],
+        gender: [""],
+        wordClass: [""],
+        exampleSentence: [""]
       })
   }
 
@@ -48,7 +51,6 @@ export class FlashcardsComponent {
   async listFlashcardsByFolder(id: number) {
     await this.flashcardsService.getFlashcardsByFolder(id).subscribe((flashcards) => {
       this.flashcards = flashcards;
-      console.log("reloades flashcards" + flashcards)
     })
   }
 
@@ -58,14 +60,28 @@ export class FlashcardsComponent {
     }
   }
 
+  deleteFlashcard(id: number) {
+    this.flashcardsService.deleteFlashcard(id);
+  }
+
+
   createFlashcard(): AddFlashcardDTO {
     return {
-      word: this.addFlashcardForm.get('word')?.value,
-      translation: this.addFlashcardForm.get('translation')?.value,
-      gender: this.addFlashcardForm.get('gender')?.value,
-      wordClass: this.addFlashcardForm.get('wordClass')?.value,
-      exampleSentence: this.addFlashcardForm.get('exampleSentence')?.value,
+      word: this.getFormValue('word'),
+      translation: this.getFormValue('translation'),
+      gender: this.formatNullENUM('gender'),
+      wordClass: this.formatNullENUM('wordClass'),
+      exampleSentence: this.getFormValue('exampleSentence'),
       folderId: Number(this.folderId)
     }
+  }
+
+  formatNullENUM(field: string): string | null {
+    let value = this.getFormValue(field) == "" ? null : this.getFormValue(field)
+    return value;
+  }
+
+  getFormValue(field: string): string {
+    return this.addFlashcardForm.get(field)?.value;
   }
 }
