@@ -91,7 +91,11 @@ public class FlashcardDTO {
         flashcard.setTranslation(translation);
         flashcard.setGender(gender);
         flashcard.setWordClass(wordClass);
-        flashcard.setState(state);
+        if (state == null) {
+            flashcard.setState(State.unfamiliar);
+        } else {
+            flashcard.setState(state);
+        }
         flashcard.setExampleSentence(exampleSentence);
         flashcard.setFolderId(folderId);
         return flashcard;
