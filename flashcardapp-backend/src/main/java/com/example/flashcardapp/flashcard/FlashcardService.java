@@ -17,6 +17,10 @@ public class FlashcardService {
         return flashcardRepository.findAll();
     }
 
+    public Iterable<Flashcard> findByFolder(Long folderId) {
+        return flashcardRepository.findByFolderId(folderId);
+    }
+
     public Optional<Flashcard> findFlashcard(Long id) {
         return flashcardRepository.findById(id);
     }

@@ -14,9 +14,14 @@ public class FlashcardResource {
     @Autowired
     private FlashcardService flashcardService;
 
-    @GetMapping
+    @GetMapping()
     private Iterable<Flashcard> getAll() {
         return flashcardService.findAll();
+    }
+
+    @GetMapping("/folder/{folderId}")
+    private Iterable<Flashcard> getByFolder(@PathVariable Long folderId) {
+        return flashcardService.findByFolder(folderId);
     }
 
     @GetMapping("/{id}")
