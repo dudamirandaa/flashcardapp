@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+// This class implements all functionality related to flashcards
 @Service
 public class FlashcardService {
 
@@ -17,6 +18,7 @@ public class FlashcardService {
         return flashcardRepository.findAll();
     }
 
+    // This method implements the functionality to return all flashcards in a given folder
     public Iterable<Flashcard> findByFolder(Long folderId) {
         return flashcardRepository.findByFolderId(folderId);
     }
@@ -29,6 +31,8 @@ public class FlashcardService {
         return flashcardRepository.save(flashcardDTO.toFlashcard());
     }
 
+    // This method implements the functionality to update a given flashcard,
+    // if it exists in the database
     public Optional<Flashcard> update(Long id, FlashcardDTO flashcardDTO) {
         Optional<Flashcard> flashcard = flashcardRepository.findById(id);
         flashcard.ifPresent(flashcard1 -> {

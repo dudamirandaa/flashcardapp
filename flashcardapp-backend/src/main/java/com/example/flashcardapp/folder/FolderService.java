@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+// This class implements all functionality related to folders
 @Service
 public class FolderService {
 
@@ -25,6 +26,8 @@ public class FolderService {
         return folderRepository.save(newFolder.toFolder());
     }
 
+    // This method implements the functionality to update a given folder,
+    // if it exists in the database
     public Optional<Folder> update(Long id, FolderDTO folderDTO) {
         Optional<Folder> folder = folderRepository.findById(id);
         folder.ifPresent(folder1 -> {

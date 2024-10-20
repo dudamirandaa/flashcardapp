@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+// This class handles HTTP requests made to the path /flashcards
 @RestController
 @RequestMapping("/flashcards")
 public class FlashcardResource {
@@ -19,6 +20,7 @@ public class FlashcardResource {
         return flashcardService.findAll();
     }
 
+    // This is the endpoint for returning all flashcards in a given folder
     @GetMapping("/folder/{folderId}")
     private Iterable<Flashcard> getByFolder(@PathVariable Long folderId) {
         return flashcardService.findByFolder(folderId);

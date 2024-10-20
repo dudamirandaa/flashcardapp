@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+// This class handles HTTP requests made to the path /folders
 @RestController
 @RequestMapping("/folders")
 public class FolderResource {

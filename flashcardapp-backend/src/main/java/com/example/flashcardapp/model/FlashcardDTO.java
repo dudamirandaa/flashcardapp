@@ -1,5 +1,7 @@
 package com.example.flashcardapp.model;
 
+// This class allows JSON objects received through HTTP requests to be
+// transformed into Flashcard objects that will be inserted into the database
 public class FlashcardDTO {
 
     private String word;
@@ -85,6 +87,9 @@ public class FlashcardDTO {
         this.folderId = folderId;
     }
 
+    // This method transforms the JSON object received through an HTTP request
+    // into a Flashcard object, setting the state to unfamiliar in case the user
+    // didn't specify a state while creating
     public Flashcard toFlashcard() {
         Flashcard flashcard = new Flashcard();
         flashcard.setWord(word);
@@ -101,6 +106,9 @@ public class FlashcardDTO {
         return flashcard;
     }
 
+    // This method allows Flashcard entries on the database to be updated
+    // according to the information received through a JSON object,
+    // and changes only the fields given by the user
     public Flashcard updateFlashcard(Flashcard flashcard) {
         if (getWord() != null) {
             flashcard.setWord(getWord());
