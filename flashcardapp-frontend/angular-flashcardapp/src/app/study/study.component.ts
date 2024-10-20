@@ -22,11 +22,18 @@ export class StudyComponent {
     private router: Router
   ) {}
 
+  // Tasks executed everytime the container is initiated
   ngOnInit(): void {
+    // Identifies the folderId parameter from the URL and assigns it to the class variable
     this.folderId = this.route.snapshot.paramMap.get('folderId');
+
+    // Lists all flashcards in the given folder
     this.listFlashcardsByFolder(Number(this.folderId));
   }
 
+  // This method handles the call for the backend server to access all flashcards in the database
+  // that are associated to the given folder and, in case there are any, assigns one of them to a
+  // variable used for iterating 
   async listFlashcardsByFolder(id: number) {
     await this.flashcardsService.getFlashcardsByFolder(id).subscribe((flashcards) => {
       this.flashcards = flashcards
@@ -37,15 +44,18 @@ export class StudyComponent {
     })
   }
 
+  // This method handles the switching between a word the its translation
   toggleWordAndTranslation() {
     this.wordAndTranslation = !this.wordAndTranslation;
   }
 
+  // This method handles the collapsing and expanding of the example sentence for the given word
   toggleShowExampleSentence() {
     this.showExampleSentence = !this.showExampleSentence;
   }
 
-
+  // This method handles the iterations through all flashcards in the folder and reinitializes
+  // the toggles for word and translation and example sentence
   nextItem(): void {
     if (this.currentIndex < this.flashcards.length - 1) {
       this.currentIndex++;
@@ -59,6 +69,7 @@ export class StudyComponent {
     }
   }
 
+  // This method handles navigation to the view for adding new flashcards
   addFlashcards(folderId: string | null): void {
     this.router.navigate([`/flashcards`, folderId])
   }

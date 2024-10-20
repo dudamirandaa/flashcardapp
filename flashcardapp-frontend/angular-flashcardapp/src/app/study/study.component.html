@@ -1,18 +1,25 @@
+<!-- This card allows the user to review words. It is showed when there are any flashcards in the folder -->
 <div *ngIf="currentFlashcard" class="p-3">
     <div class="card text-center">
         <div class="card-body">
+
+            <!-- This section toggles between word and translation when the user clicks on the word -->
             <div *ngIf="wordAndTranslation">
                 <h3 (click)="toggleWordAndTranslation()">{{currentFlashcard.word}}</h3>
             </div>
             <div *ngIf="!wordAndTranslation">
                 <h3 (click)="toggleWordAndTranslation()">{{currentFlashcard.translation}}</h3>
             </div>
+
+            <!-- This section collapses and expands the example sentence for the given word -->
             <div *ngIf="showExampleSentence" class="text-secondary-emphasis">
                 <p>{{currentFlashcard.exampleSentence}}</p>
             </div>
             <div>
                 <button class="btn btn-secondary btn-sm" (click)="toggleShowExampleSentence()">View example sentence</button>
             </div>
+
+            <!-- This button navigates through all the words in the folder -->
             <div>
                 <button class="btn btn-warning m-3" (click)="nextItem()" [disabled]="currentIndex === flashcards.length - 1">Next</button>
             </div>
@@ -20,6 +27,7 @@
     </div>
 </div>
 
+<!-- This note is showed when there are no flashcards in the given folder -->
 <div *ngIf="!flashcards.length" class="p-3">
     <div class="card text-center">
         <div class="card-body">
@@ -27,7 +35,7 @@
             <button type="submit" (click)="addFlashcards(folderId)" class="btn btn-primary btn-sm">Add flashcards</button>
         </div>
     </div>
-  </div>
+</div>
 
 <div class="alert alert-primary m-3 alert-sm d-inline-block">
     Note: you can click on the word to see the translation :)

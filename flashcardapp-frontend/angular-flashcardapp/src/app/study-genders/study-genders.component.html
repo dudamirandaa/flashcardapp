@@ -1,6 +1,9 @@
+<!-- This card allows the user to practice the grammatical gender of words. It is showed when there are any flashcards in the folder -->
 <div *ngIf="currentFlashcard" class="p-3">
     <div class="card text-center">
         <div class="card-body">
+
+            <!-- Changes color of the text depending on the value of the gender attribute of the flashcard -->
             <div >
                 <h3 *ngIf="checkAnswer" [ngClass]="{'text-primary-emphasis': currentFlashcard.gender === 'der', 
                                                       'text-danger': currentFlashcard.gender === 'die', 
@@ -9,9 +12,13 @@
                 </h3>
                 <h3>{{currentFlashcard.word}}</h3>
             </div>
+
+            <!-- This section collapses and expands the grammatical gender for the given word -->
             <div>
                 <button class="btn btn-primary" (click)="toggleCheckAnswer()">Check answer</button>
             </div>
+
+            <!-- This button navigates through all the words in the folder -->
             <div>
                 <button class="btn btn-warning m-3" (click)="nextItem()" [disabled]="currentIndex === flashcards.length - 1">Next</button>
             </div>
@@ -19,6 +26,7 @@
     </div>
 </div>
 
+<!-- This note is showed when there are no flashcards in the given folder -->
 <div *ngIf="!flashcards.length" class="p-3">
     <div class="card text-center">
         <div class="card-body">
@@ -26,4 +34,4 @@
             <button type="submit" (click)="addFlashcards(folderId)" class="btn btn-primary btn-sm">Add flashcards</button>
         </div>
     </div>
-  </div>
+</div>

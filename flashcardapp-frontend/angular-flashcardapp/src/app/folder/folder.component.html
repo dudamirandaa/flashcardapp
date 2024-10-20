@@ -1,9 +1,15 @@
+<!-- This view shows the folders list and the form for adding new folder -->
 <div class="container p-3">
+
+    <!-- Header of the view -->
     <div class="d-flex justify-content-between">
         <h3>Folders</h3>
+
+        <!-- This button collapses and expands the card for adding a new folder -->
         <button type="submit" (click)="toggleAddFolderForm()" class="btn btn-outline-secondary btn-sm">Add folder</button>
     </div>
 
+    <!-- This card element contains the form for adding a new folder -->
     <div *ngIf="showAddFolderForm" class="d-flex justify-content-center">
         <div class="card text-center">
             <div class="card-body">
@@ -19,15 +25,22 @@
         </div>
     </div>
 
+    <!-- List of folders -->
     <div class="d-flex justify-content-center">
         <table class="table">
             <tbody>
+                <!-- Iterates through the array of folders and populates the rows of the table -->
                 <tr *ngFor="let folder of folders">
                     <td class="col-md-7">{{folder.folderName}}</td>
                     <td class="col-md-5">
                         <div class="d-flex gap-2">
+                            <!-- This button routes to the list of flashcards of the given folder -->
                             <button type="submit" (click)="view(folder.id)" class="btn btn-primary btn-sm">View</button>
+
+                            <!-- This button routes to the view for practicing the grammatical gender of words -->
                             <button type="submit" (click)="studyGenders(folder.id)" class="btn btn-warning btn-sm">Study genders</button>
+
+                            <!-- This button routes to the view for reviewing words -->
                             <button type="submit" (click)="study(folder.id)" class="btn btn-success btn-sm">Study</button>
                         </div>
                     </td>

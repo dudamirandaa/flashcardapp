@@ -1,3 +1,4 @@
+// This object allows for populating the form when updating a flashcard
 export interface UpdateFlashcardDTO {
     word: string;
     translation: string;

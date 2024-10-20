@@ -6,6 +6,7 @@ import { StudyComponent } from './study/study.component';
 import { StudyGendersComponent } from './study-genders/study-genders.component';
 import { GreetingsComponent } from './greetings/greetings.component';
 
+// This class defines which components and views are used for each address
 const routes: Routes = [
   {
     path: '',

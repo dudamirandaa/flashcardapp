@@ -1,3 +1,7 @@
+/*
+ * This class alligns the bullet points of the list centrally
+ * next to the content, as opposed to on the far left of the page
+ */
 .centered-list {
     list-style-position: inside;
     padding-left: 0;

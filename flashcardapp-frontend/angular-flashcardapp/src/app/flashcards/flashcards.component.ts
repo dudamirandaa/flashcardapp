@@ -21,26 +21,33 @@ export class FlashcardsComponent {
     private formBuilder: FormBuilder
   ) {}
 
+  // Tasks executed everytime the container is initiated
   ngOnInit(): void {
-      this.route.paramMap.subscribe(param => {
-        this.folderId = param.get('folderId');
+    // Identifies the folderId parameter from the URL and assigns it to the class variable
+    this.route.paramMap.subscribe(param => {
+      this.folderId = param.get('folderId');
 
-        if (this.folderId) {
-          this.listFlashcardsByFolder(Number(this.folderId));
-        }
-        else {
-          this.listFlashcards();
-        }
-      });
-      
-      this.addFlashcardForm = this.formBuilder.group({
-        word: ["", Validators.required],
-        translation: ["", Validators.required],
-        gender: [""],
-        wordClass: [""],
-        exampleSentence: [""]
-      })
+      // Lists all flashcards in a given folder, in the case that a folderId was given in the URL,
+      // else list all flashcards saved in the database
+      if (this.folderId) {
+        this.listFlashcardsByFolder(Number(this.folderId));
+      }
+      else {
+        this.listFlashcards();
+      }
+    });
+    
+    // Constructs a new FormGroup instance for the form for adding flashcards
+    this.addFlashcardForm = this.formBuilder.group({
+      word: ["", Validators.required],
+      translation: ["", Validators.required],
+      gender: [""],
+      wordClass: [""],
+      exampleSentence: [""]
+    })
   }
+
+  // The following methods handle calls for the backend server
 
   async listFlashcards() {
     await this.flashcardsService.getFlashcards().subscribe((flashcards) => {
@@ -64,7 +71,7 @@ export class FlashcardsComponent {
     this.flashcardsService.deleteFlashcard(id);
   }
 
-
+  // This method builds an object according to the values of the form for adding a new flashcard
   createFlashcard(): AddFlashcardDTO {
     return {
       word: this.getFormValue('word'),
@@ -76,11 +83,13 @@ export class FlashcardsComponent {
     }
   }
 
+  // This method returns null for empty form fields for the ENUM attributes
   formatNullENUM(field: string): string | null {
     let value = this.getFormValue(field) == "" ? null : this.getFormValue(field)
     return value;
   }
 
+  // This method gets the value of a given field of the form for adding flashcards
   getFormValue(field: string): string {
     return this.addFlashcardForm.get(field)?.value;
   }

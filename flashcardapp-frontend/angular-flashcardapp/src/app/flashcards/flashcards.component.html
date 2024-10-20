@@ -1,79 +1,84 @@
+<!-- This view shows the flashcards lists and the form for adding new flashcards -->
 <div class="container p-3">
-    <div>
-      <h3>Flashcards</h3>
+  <h3>Flashcards</h3>
 
-      <div *ngIf="folderId" class="py-3">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">Add flashcard</div>
-            <div class="text-center">
-              <form [formGroup]="addFlashcardForm" (ngSubmit)="addFlashcard()" class="">
-                <div class="row g-3">
-                  <div class="col-md-4">
-                    <input class="form-control" type="text" formControlName="word" placeholder="Word" aria-label="word">
-                  </div>
-                  <div class="col-md-4">
-                    <input class="form-control" type="text" formControlName="translation" placeholder="Translation" aria-label="translation">
-                  </div>
-                  <div class="col-md-2">
-                    <input class="form-control" list="genderOptions" formControlName="gender" placeholder="Gender" aria-label="gender">
-                    <datalist id="genderOptions">
-                      <option value="der">
-                      <option value="die">
-                      <option value="das">
-                    </datalist>
-                  </div>
-                  <div class="col-md-2">
-                    <input class="form-control" list="wordClassOptions" formControlName="wordClass" placeholder="Word class" aria-label="word class">
-                    <datalist id="wordClassOptions">
-                      <option value="noun">
-                      <option value="verb">
-                      <option value="adjective">
-                    </datalist>
-                  </div>
-                  <div class="col-md-10">
-                    <input class="form-control" type="text" formControlName="exampleSentence" placeholder="Example sentence" aria-label="example sentence">
-                  </div>
-                  <div class="col-md-2">
-                    <button type="submit" [disabled]="addFlashcardForm.invalid" class="btn btn-primary">Add flashcard</button>
-                  </div>
-                </div>
-              </form>
+  <!-- This card element contains the form for adding new flashcards. It is active when viewing the flashcards by folder -->
+  <div *ngIf="folderId" class="py-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Add flashcard</div>
+
+        <div class="text-center">
+          <form [formGroup]="addFlashcardForm" (ngSubmit)="addFlashcard()">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="word" placeholder="Word" aria-label="word">
+              </div>
+              <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="translation" placeholder="Translation" aria-label="translation">
+              </div>
+              <div class="col-md-2">
+                <input class="form-control" list="genderOptions" formControlName="gender" placeholder="Gender" aria-label="gender">
+                <datalist id="genderOptions">
+                  <option value="der">
+                  <option value="die">
+                  <option value="das">
+                </datalist>
+              </div>
+              <div class="col-md-2">
+                <input class="form-control" list="wordClassOptions" formControlName="wordClass" placeholder="Word class" aria-label="word class">
+                <datalist id="wordClassOptions">
+                  <option value="noun">
+                  <option value="verb">
+                  <option value="adjective">
+                </datalist>
+              </div>
+              <div class="col-md-10">
+                <input class="form-control" type="text" formControlName="exampleSentence" placeholder="Example sentence" aria-label="example sentence">
+              </div>
+              <div class="col-md-2">
+                <button type="submit" [disabled]="addFlashcardForm.invalid" class="btn btn-primary">Add flashcard</button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
+
       </div>
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Word</th>
-            <th>Translation</th>
-            <th>Gender</th>
-            <th>Word class</th>
-            <th>State</th>
-            <th>Example sentence</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let flashcard of flashcards">
-            <td>{{flashcard.word}}</td>
-            <td>{{flashcard.translation}}</td>
-            <td>{{flashcard.gender}}</td>
-            <td>{{flashcard.wordClass}}</td>
-            <td [ngClass]="{'text-danger-emphasis': flashcard.state === 'unfamiliar', 
-                              'text-primary-emphasis': flashcard.state === 'familiar', 
-                              'text-success-emphasis': flashcard.state === 'acquired'}">
-              {{flashcard.state}}
-            </td>
-            <td>{{flashcard.exampleSentence}}</td>
-            <td>
-              <button type="submit" (click)="deleteFlashcard(flashcard.id)" class="btn btn-danger btn-sm">Detele</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
     </div>
+  </div>
+
+  <!-- List of flashcards -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Word</th>
+        <th>Translation</th>
+        <th>Gender</th>
+        <th>Word class</th>
+        <th>State</th>
+        <th>Example sentence</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Iterates through the array of flashcards and populates the rows of the table -->
+      <tr *ngFor="let flashcard of flashcards">
+        <td>{{flashcard.word}}</td>
+        <td>{{flashcard.translation}}</td>
+        <td>{{flashcard.gender}}</td>
+        <td>{{flashcard.wordClass}}</td>
+        <!-- Changes color of the text depending on the value of the state attribute of the flashcard -->
+        <td [ngClass]="{'text-danger-emphasis': flashcard.state === 'unfamiliar', 
+                          'text-primary-emphasis': flashcard.state === 'familiar', 
+                          'text-success-emphasis': flashcard.state === 'acquired'}">
+          {{flashcard.state}}
+        </td>
+        <td>{{flashcard.exampleSentence}}</td>
+        <td>
+          <button type="submit" (click)="deleteFlashcard(flashcard.id)" class="btn btn-danger btn-sm">Detele</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    
 </div>

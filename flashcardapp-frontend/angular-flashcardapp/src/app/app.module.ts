@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StudyGendersComponent } from './study-genders/study-genders.component';
 import { GreetingsComponent } from './greetings/greetings.component';
 
+// This class defines which components belong to the module,
+// import other modules that the components need, and provides services
+// the components can use
 @NgModule({
   declarations: [
     AppComponent,

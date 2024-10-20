@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddFlashcardDTO } from './model/add-flashcard-dto';
 
+// This class handles calls to the backend server made for the path /flashcards
 @Injectable({
   providedIn: 'root'
 })
@@ -16,10 +17,6 @@ export class FlashcardsService {
 
   getFlashcardsByFolder(folderId: number) {
     return this.http.get<Flashcard[]>('/api/flashcards/folder/' + folderId);
-  }
-
-  getFlashcard(id: number) {
-    // return this.http.get<Flashcard>('/api/flashcards/' + id);
   }
 
   addFlashcard(newFlashcard: AddFlashcardDTO) {

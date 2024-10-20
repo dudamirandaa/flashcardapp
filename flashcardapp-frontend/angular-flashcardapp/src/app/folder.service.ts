@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Folder } from "./model/folder";
 import { AddFolderDTO } from "./model/add-folder-dto";
 
+// This class handles calls to the backend server made for the path /folders
 @Injectable({
     providedIn: 'root'
 })
