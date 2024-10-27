@@ -13,7 +13,7 @@ Ensure you have the following installed:
 
 ## Clone the repository
 ```bash
-git clone https://github.com/<yourusername>/flashcardapp.git
+git clone git@github.com:dudamirandaa/flashcardapp.git
 ```
 
 ## Database Setup
@@ -44,7 +44,7 @@ Import the sample SQL files provided:
 
 2. Configure the database connection in `application.properties`:
     ```properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/<yourdbname>
+    spring.datasource.url=jdbc:mysql://localhost:3306/flashcards?serverTimezone=Europe/Berlin
     spring.datasource.username=<yourusername>
     spring.datasource.password=<yourpassword>
     ```
