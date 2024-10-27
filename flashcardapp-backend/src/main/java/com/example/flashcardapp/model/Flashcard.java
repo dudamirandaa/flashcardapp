@@ -16,11 +16,14 @@ public class Flashcard {
     @Column(nullable = false)
     private String translation;
 
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "word_class")
     private WordClass wordClass;
 
+    @Enumerated(EnumType.STRING)
     private State state;
 
     @Column(name = "example_sentence")
