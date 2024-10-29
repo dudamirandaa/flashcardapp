@@ -1,0 +1,40 @@
+/* 
+    This formats the folder table for small screens
+*/
+@media (max-width: 576px) {
+    .folder-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .folder-row td {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+}
+
+/* 
+    This formats the folder table for medium and large screens
+*/
+@media (min-width: 577px) {
+
+    /* Places the buttons on the far right */
+    .button-group {
+        justify-content: flex-end;
+    }
+
+    /* Sizes the buttons to avoid lagging in medium screens */
+    .button-group .btn {
+        padding: 0.3rem 0.75rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+}

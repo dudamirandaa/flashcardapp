@@ -30,10 +30,10 @@
         <table class="table">
             <tbody>
                 <!-- Iterates through the array of folders and populates the rows of the table -->
-                <tr *ngFor="let folder of folders">
+                <tr *ngFor="let folder of folders" class="folder-row">
                     <td class="col-md-7">{{folder.folderName}}</td>
                     <td class="col-md-5">
-                        <div class="d-flex gap-2">
+                        <div class="d-flex gap-2 button-group">
                             <!-- This button routes to the list of flashcards of the given folder -->
                             <button type="submit" (click)="view(folder.id)" class="btn btn-primary btn-sm">View</button>
 
