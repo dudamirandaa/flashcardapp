@@ -104,3 +104,31 @@ Import the sample SQL files provided:
 You can find a recording with explanations on navigating the application here:
 
 [Navigating the application](https://github.com/dudamirandaa/flashcardapp/raw/main/docs_phase3/Phase%203%20screencast.mp4)
+
+## Test cases
+
+The following table shows how the application should respond to actions performed through the interface:
+
+| Action |  Outcome |
+|:-----:|:--------:|
+| General |
+| Navigating to http://localhost:4200/ | The welcome page should be shown |
+| Clicking on Flashcard app in the navigation bar |  The welcome page should be shown  |
+| Clicking on Folders in the navigation bar | The list of folders should be shown |
+| Folders page |
+| Clicking on the Add folder button | The card with a form for adding a new folder should be toggled (alternately expanded and collapsed) |
+| Typing in the Folder name field | The Add folder button inside the card should be activated |
+| Clicking on the Add folder button inside the card | Shold send the form and reload the page, showing the folders list, including the newly added folder |
+| Clicking on the View button in the folder list | The list of flashcards and the card for adding new flashcards should be shown |
+| Clicking the Study genders button | Should navigate to the study genders view |
+| Clicking the Study button | Should navigate to the study view |
+| Flashcards page |
+| Typing in the Word and Translation fields | The Add flashcard button inside the card should be activated |
+| Clicking on the Add flashcard button inside the card | Shold send the form and reload the page, showing the flashcard list, including the newly added flashcard |
+| Study genders section |
+| Clicking on the Check answer button | Should toggle the article corresponding to the word |
+| Clicking on the Next button | Should show the next word |
+| Study section	|
+| Clicking on the word | Should alternate between showing the translation and the word |
+| Clicking the View example sentence button | Should show toggle showing the example sentence corresponding to the word |
+| Clicking on the Next button | Should show the next word |
