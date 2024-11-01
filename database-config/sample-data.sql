@@ -1,3 +1,4 @@
+USE flashcards;
 INSERT INTO folders ( folder ) VALUES
 	( 'Begriffe für Programmierer*innen' );
     
